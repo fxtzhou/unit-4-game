@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=News+Cycle&display=swap" rel="stylesheet">
     <link href="assets/css/reset.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
 </head>
 
@@ -17,63 +17,58 @@
 
     <h1>A long time ago in a galaxy far, far away...</h1>
     <p>The galaxy is depending on you. Make your choice.</p>
-    <div class="container">
-        <div id="rey" style="float:left; margin: 5px; padding: 10px; background-color: black;">
-            <h2>Rey</h2>
-            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/star-wars-episode-9-rey-1555090417.jpg?crop=0.414xw:1.00xh;0.186xw,0&resize=480:*"
-                height=150>
-            <div id="rey-score">
-                <h3>150</h3>
-            </div>
-        </div>
-
-        <div id="ventress" style="float:left; margin: 5px; padding: 10px; background-color: black;">
-            <h2>Asajj Ventress</h2>
-            <img src="http://www.dailyjedi.com/wp-content/uploads/2017/10/Asajj-Ventress-1.jpg" height=150>
-            <div id="ventress-score">
-                <h3>300</h3>
-            </div>
-        </div>
-
-        <div id="general" style="float:left; margin: 5px; padding: 10px; background-color: black;">
-            <h2>General Grievous</h2>
-            <img src="https://vignette.wikia.nocookie.net/starwars/images/d/de/Grievoushead.jpg/revision/latest?cb=20100630082056"
-                height=150>
-            <div id="general-score">
-                <h3>200</h3>
+    <div class="char">
+        <div class="row ">
+            <div class="row1 _0" id="rey" style="float:left; margin: 5px; padding: 10px; background-color: black;">
+                <h2>Rey</h2>
+                <img src='assets/images/rey.jpg' id="reyPic" height=150>
+                <h2 class="reyHp"></h2>
             </div>
 
-        </div>
+            <div class="row1 _1" id="ventress" style="float:left; margin: 5px; padding: 10px; background-color: black;">
+                <h2>Asajj Ventress</h2>
+                <img src='assets/images/ventress.jpg' id="ventressPic" height=150>
+                <h2 class="ventressHp"></h2>
+            </div>
 
-        <div id="dooku" style="float:left; margin: 5px; padding: 10px; background-color: black;">
-            <h2>Count Dooku</h2>
-            <img src="https://vignette.wikia.nocookie.net/villains/images/f/f5/Count-dooku.jpg/revision/latest?cb=20170619004133"
-                height=150>
-            <div id="dooku-score">
-                <h3>200</h3>
+            <div class="row1 _2" id="general" style="float:left; margin: 5px; padding: 10px; background-color: black;">
+                <h2>General Grievous</h2>
+                <img src='assets/images/general.jpg' id="generalPic" height=150>
+                <h2 class="generalHp"></h2>
+            </div>
+
+            <div class="row1 _3" id="dooku" style="float:left; margin: 5px; padding: 10px; background-color: black;">
+                <h2>Count Dooku</h2>
+                <img src='assets/images/dooku.jpg' id="dookuPic" height=150>
+                <h2 class="dookuHp"></h2>
             </div>
         </div>
     </div>
 
-        <div class="fight-container">
-            <div id="fighter" style="float: left; width: 250px;">
-                <h2>Your Character</h2>
-            </div>
-                
-            </div>
 
-            <div id="enemies-left" style="float: left; width: 250px;">
-                <h2>Enemies Left</h2>
-            </div>
+    <div id="fighter" style="float: left; width: 250px;">
+        <h2>Your Character: </h2>
 
-            <div id="attacker" style="float: left; width: 250px;">
-                    <h2>You're Under Attack!</h2>
-                    <div id="attack-text"><!-- Attack text goes here --></div>
-                    
-                </div>
-        </div>
-    
+    </div>
+
+
+    <div id="enemies-left" style="float: left;">
+        <h2>Enemies Left</h2>
+        <div id="enemy0" style="float: left;"></div>
+        <div id="enemy1" style="float: left;"> </div>
+        <div id="enemy2" style="float: left;"></div>
+    </div>
+
+    <!-- <div id="attacker" style="float: left; width: 250px;">
+        <h2>You're Under Attack!</h2>
+        <div id="attack-text">
+            <!-- Attack text goes here -->
+        </div> -->
+
+    </div>
+
+
 </body>
-<script src="game.js"></script>
+<script src="assets/javascript/game.js"></script>
 
 </html>
