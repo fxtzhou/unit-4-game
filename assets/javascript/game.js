@@ -1,4 +1,3 @@
-var attack;
 var defend;
 var attackcharacter;
 var health;
@@ -9,11 +8,14 @@ var dfhealth;
 var dfattack;
 var dfenemyattackback;
 var name;
-var YourCharacter;
+var yourChar;
 var YourDefender;
 var selectedFighter = "";
 var selectedDefender = "";
-
+var selectedEnemy;
+var enemiesLeft = [];
+var selectedFighterIndex;
+var result;
 
 var characters = {
     rey: {
@@ -49,12 +51,6 @@ var characters = {
     }
 }
 
-
-var selectedEnemy;
-var enemiesLeft = [];
-var selectedFighterIndex;
-var result;
-
 function reset() {
     $('.char').show();
     var selectedFighter = "";
@@ -66,8 +62,7 @@ function reset() {
     characters.general.health = 150;
     characters.dooku.health = 180;
 
-    // reset attack power.
-    characters.rey.attack = 8;
+    characters.rey.attack = 15;
     characters.ventress.attack = 10;
     characters.general.attack = 10;
     characters.dooku.attack = 12;
@@ -80,14 +75,11 @@ function reset() {
     $(".youLose").empty();
     $(".noEnemy").empty();
 
-    //writing each characters health to the html so they show up on the page.
+    //reset hp stats
     $(".reyHp").html(characters.rey.health);
     $(".ventressHp").html(characters.ventress.health);
     $(".generalHp").html(characters.general.health);
     $(".dookuHp").html(characters.dooku.health);
-
-
-
 }
 
 $(document).ready(function () {
@@ -95,15 +87,16 @@ $(document).ready(function () {
 
 
 $(".row1").click(function(){
-
 console.log(this);
+
     if (selectedFighter == "") {
         $(this).appendTo("#fighter");
         selectedFighter = $(this);
-        yourChar = $('#fighter').attr("value");
+        yourChar = $(selectedFighter);
     }
 
     if (yourChar == characters.rey.name) {
+        console.log(yourChar);
         health = characters.rey.health;
         attack = characters.rey.attack;
         enemyattackback = characters.rey.enemyattackback;
@@ -124,12 +117,10 @@ console.log(this);
         enemyattackback = characters.dooku.enemyattackback;
 
     }
-
+console.log(yourChar);
     for (var i = 0; i < 4; i++) {
         $("._" + [i]).not(yourChar).appendTo("#enemy" + [i]);
     }
-
-    
 console.log(yourChar);
 
 });
@@ -138,7 +129,7 @@ $("#enemies-left").click(function(){
 
     console.log(this);
         if (selectedDefender == "") {
-            $(this).append("#enemies-left");
+            $(this).appendTo("#enemies-left");
             selectedDefender = $(this);
             YourDefender = $(selectedDefender).children().attr("value");
         }
@@ -168,40 +159,5 @@ $("#enemies-left").click(function(){
     console.log(YourDefender);
     
     });
-
-    $("#enemies-left").click(function(){
-
-        console.log(this);
-            if (selectedDefender == "") {
-                $(this).appendTo("#enemies-left");
-                selectedDefender = $(this);
-                YourDefender = $(selectedDefender).children().attr("value");
-            }
-        
-            if (YourDefender == characters.rey.name) {
-                dfhealth = characters.rey.health;
-                dfattack = characters.rey.attack;
-                dfenemyattackback = characters.rey.enemyattackback;
-                
-            } else if ( YourDefender == characters.ventress.name) {
-                dfhealth = characters.ventress.health;
-                dfattack = characters.ventress.attack;
-                dfenemyattackback = characters.ventress.enemyattackback;
-        
-            } else if (YourDefender == characters.general.name) {
-                dfhealth = characters.general.health;
-                dfattack = characters.general.attack;
-                dfenemyattackback = characters.general.enemyattackback;
-        
-            } else if (YourDefender == characters.dooku.name) {
-                dfhealth = characters.dooku.health;
-                dfattack = characters.dooku.attack;
-                dfenemyattackback = characters.dooku.enemyattackback;
-        
-            }
-            
-        console.log(YourDefender);
-        
-        });
 
 });
