@@ -1,0 +1,19 @@
+.container{
+    margin-left: 200px;
+}
+
+h1{
+    padding: 20px;
+    font-family: 'News Cycle', serif;
+    font-size: 72px;
+    color: lightblue;
+    display: block;
+    text-align: center;
+}
+
+h2{
+    font-family: 'News Cycle', serif;
+    font-size: 24px;
+    text-align: center;
+    color: yellow;
+}
