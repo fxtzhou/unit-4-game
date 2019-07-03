@@ -1,7 +1,10 @@
+/* Container for characters */
 .container{
-    margin-left: 200px;
+    margin-left: 125px;
+
 }
 
+/* title style */
 h1{
     padding: 20px;
     font-family: 'News Cycle', serif;
@@ -11,9 +14,20 @@ h1{
     text-align: center;
 }
 
+/* name styles */
 h2{
     font-family: 'News Cycle', serif;
     font-size: 24px;
     text-align: center;
     color: yellow;
+    padding-bottom: 10px;
+}
+
+/* score styles */
+h3{
+    font-family: 'News Cycle', serif;
+    font-size: 18px;
+    color: yellow;
+    text-align: center;
+    
 }
