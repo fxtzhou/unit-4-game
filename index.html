@@ -19,25 +19,29 @@
     <p>The galaxy is depending on you. Make your choice.</p>
     <div class="container">
         <div class="row">
-            <div class="row1 _0" id="rey" value="rey" style="float:left; margin: 5px; padding: 10px; background-color: black;">
+            <div class="row1 _0" id="rey" value="rey"
+                style="float:left; margin: 5px; padding: 10px; background-color: black;">
                 <h2>Rey</h2>
                 <img src='assets/images/rey.jpg' id="reyPic" height=150>
                 <h2 class="reyHp"></h2>
             </div>
 
-            <div class="row1 _1" id="ventress" value="ventress" style="float:left; margin: 5px; padding: 10px; background-color: black;">
+            <div class="row1 _1" id="ventress" value="ventress"
+                style="float:left; margin: 5px; padding: 10px; background-color: black;">
                 <h2>Asajj Ventress</h2>
                 <img src='assets/images/ventress.jpg' id="ventressPic" height=150>
                 <h2 class="ventressHp"></h2>
             </div>
 
-            <div class="row1 _2" id="general" value="general" style="float:left; margin: 5px; padding: 10px; background-color: black;">
+            <div class="row1 _2" id="general" value="general"
+                style="float:left; margin: 5px; padding: 10px; background-color: black;">
                 <h2>General Grievous</h2>
                 <img src='assets/images/general.jpg' id="generalPic" height=150>
                 <h2 class="generalHp"></h2>
             </div>
 
-            <div class="row1 _3" id="dooku" value="dooku" style="float:left; margin: 5px; padding: 10px; background-color: black;">
+            <div class="row1 _3" id="dooku" value="dooku"
+                style="float:left; margin: 5px; padding: 10px; background-color: black;">
                 <h2>Count Dooku</h2>
                 <img src='assets/images/dooku.jpg' id="dookuPic" height=150>
                 <h2 class="dookuHp"></h2>
@@ -46,30 +50,29 @@
     </div>
 
 
-    <div id="fighter" style="float: left; width: 250px;">
+    <div id="fighter" style="float:left; width: 250px;">
         <h2>Your Character: </h2>
-
+        <div id="attack-button">
+                <button>Attack</button>
+            </div>
     </div>
 
+    <div class="stats">
+        <p id="attack-text"></p>
+        <p id="counter-text"></p>
+    </div>
 
-    <div id="enemies-left" style="float: left;">
+    <div id="defender" style="float: left; width: 250px;">
+        <h2>Defender: </h2>
+        
+    </div>
+
+    <div id="enemies-left" style="float: right;">
         <h2>Enemies Left</h2>
-        <div id="enemy0" style="float: left;"></div>
-        <div id="enemy1" style="float: left;"> </div>
-        <div id="enemy2" style="float: left;"></div>
-        <div id="enemy3" style="float: left;"></div>
-    </div>
-
-
-    
-    </div>
-
-    <!-- <div id="attacker" style="float: left; width: 250px;">
-        <h2>You're Under Attack!</h2>
-        <div id="attack-text">
-            <!-- Attack text goes here -->
-        </div> 
-
+        <div class="move" id="enemy0" style="float: left;"></div>
+        <div class="move" id="enemy1" style="float: left;"> </div>
+        <div class="move" id="enemy2" style="float: left;"></div>
+        <div class="move" id="enemy3" style="float: left;"></div>
     </div>
 
 

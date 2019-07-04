@@ -1,13 +1,14 @@
 var defend;
-var attackcharacter;
-var health;
-var attack;
+var attackchar;
+var hp;
+var ap;
 var enemyattackback;
 var dfcharacter;
 var dfhealth;
 var dfattack;
 var dfenemyattackback;
 var name;
+var dfname;
 var yourChar;
 var YourDefender;
 var selectedFighter = "";
@@ -19,7 +20,7 @@ var result;
 
 var characters = {
     rey: {
-        name: 'Rey',
+        name: 'rey',
         health: 150,
         attack: 10,
         imageUrl: '../assets/images/rey.jpg',
@@ -27,7 +28,7 @@ var characters = {
     },
 
     ventress: { //asajj ventress
-        name: 'Asajj Ventress',
+        name: 'ventress',
         health: 175,
         attack: 15,
         imageUrl: '../assets/images/ventress.jpg',
@@ -35,7 +36,7 @@ var characters = {
     },
 
     general: { //general grievous
-        name: 'General Grievous',
+        name: 'general',
         health: 200,
         attack: 5,
         imageUrl: '../assets/images/general.jpg',
@@ -43,7 +44,7 @@ var characters = {
     },
 
     dooku: { //count dooku
-        name: 'Count Dooku',
+        name: 'dooku',
         health: 150,
         attack: 20,
         imageUrl: '../assets/images/dooku.jpg',
@@ -53,17 +54,17 @@ var characters = {
 
 function reset() {
     $('.char').show();
-    var selectedFighter = "";
-    var selectedDefender = "";
-    var enemiesLeft = [];
+     selectedFighter = "";
+     selectedDefender = "";
+     enemiesLeft = [];
 
     characters.rey.health = 140;
     characters.ventress.health = 100;
-    characters.general.health = 150;
+    characters.general.health = 175;
     characters.dooku.health = 180;
 
     characters.rey.attack = 15;
-    characters.ventress.attack = 10;
+    characters.ventress.attack = 20;
     characters.general.attack = 10;
     characters.dooku.attack = 12;
 
@@ -81,83 +82,113 @@ function reset() {
     $(".generalHp").html(characters.general.health);
     $(".dookuHp").html(characters.dooku.health);
 }
-
+reset();
 $(document).ready(function () {
-    reset();
+    
 
 
-$(".row1").click(function(){
-console.log(this);
-
-    if (selectedFighter == "") {
-        $(this).appendTo("#fighter");
-        selectedFighter = $(this);
-        yourChar = $(selectedFighter);
-    }
-
-    if (yourChar == characters.rey.name) {
-        console.log(yourChar);
-        health = characters.rey.health;
-        attack = characters.rey.attack;
-        enemyattackback = characters.rey.enemyattackback;
+    $(".row1").click(function () {
         
-    } else if (yourChar == characters.ventress.name) {
-        health = characters.ventress.health;
-        attack = characters.ventress.attack;
-        enemyattackback = characters.ventress.enemyattackback;
 
-    } else if (yourChar == characters.general.name) {
-        health = characters.general.health;
-        attack = characters.general.attack;
-        enemyattackback = characters.general.enemyattackback;
+        if (selectedFighter == "") {
+            
+            $(this).appendTo("#fighter");
+            selectedFighter = $(this);
+            yourChar = $(selectedFighter).attr("value");
+            console.log(selectedFighter);
+            console.log(yourChar)
 
-    } else if (yourChar == characters.dooku.name) {
-        health = characters.dooku.health;
-        attack = characters.dooku.attack;
-        enemyattackback = characters.dooku.enemyattackback;
+            if (yourChar == characters.rey.name) {
+                hp = characters.rey.health;
+                ap = characters.rey.attack;
+                enemyattackback = characters.rey.enemyattackback;
+                attackchar = characters.rey;
 
-    }
-console.log(yourChar);
-    for (var i = 0; i < 4; i++) {
-        $("._" + [i]).not(yourChar).appendTo("#enemy" + [i]);
-    }
-console.log(yourChar);
+            } else if (yourChar == characters.ventress.name) {
+                hp = characters.ventress.health;
+                ap = characters.ventress.attack;
+                enemyattackback = characters.ventress.enemyattackback;
+                attackchar = characters.ventress;
 
-});
+            } else if (yourChar == characters.general.name) {
+                hp = characters.general.health;
+                ap = characters.general.attack;
+                enemyattackback = characters.general.enemyattackback;
+                attackchar = characters.general;
 
-$("#enemies-left").click(function(){
+            } else if (yourChar == characters.dooku.name) {
+                hp = characters.dooku.health;
+                ap = characters.dooku.attack;
+                enemyattackback = characters.dooku.enemyattackback;
+                attackchar = characters.dooku;
 
-    console.log(this);
+            }
+
+            for (var i = 0; i < 4; i++) {
+                $("._" + [i]).not(selectedFighter).appendTo("#enemy" + [i]);
+            }
+        
+        }
+        console.log(yourChar);
+
+    });
+
+    $(".move").click(function () {
+
+        console.log(this);
+
         if (selectedDefender == "") {
-            $(this).appendTo("#enemies-left");
+            $(this).appendTo("#defender");
             selectedDefender = $(this);
             YourDefender = $(selectedDefender).children().attr("value");
+
+
+            if (YourDefender == characters.rey.name) {
+                dfhealth = characters.rey.health;
+                dfattack = characters.rey.attack;
+                dfenemyattackback = characters.rey.enemyattackback;
+                dfname = characters.rey.name;
+                defend = characters.rey;
+
+            } else if (YourDefender == characters.ventress.name) {
+                dfhealth = characters.ventress.health;
+                dfattack = characters.ventress.attack;
+                dfenemyattackback = characters.ventress.enemyattackback;
+                dfname = characters.ventress.name;
+                defend = characters.ventress;
+
+            } else if (YourDefender == characters.general.name) {
+                dfhealth = characters.general.health;
+                dfattack = characters.general.attack;
+                dfenemyattackback = characters.general.enemyattackback;
+                dfname = characters.general.name;
+                defend = characters.general;
+
+            } else if (YourDefender == characters.dooku.name) {
+                dfhealth = characters.dooku.health;
+                dfattack = characters.dooku.attack;
+                dfenemyattackback = characters.dooku.enemyattackback;
+                dfname = characters.dooku.name;
+                defend = characters.dooku;
+            }
         }
-    
-        if (YourDefender == characters.rey.name) {
-            dfhealth = characters.rey.health;
-            dfattack = characters.rey.attack;
-            dfenemyattackback = characters.rey.enemyattackback;
-            
-        } else if ( YourDefender == characters.ventress.name) {
-            dfhealth = characters.ventress.health;
-            dfattack = characters.ventress.attack;
-            dfenemyattackback = characters.ventress.enemyattackback;
-    
-        } else if (YourDefender == characters.general.name) {
-            dfhealth = characters.general.health;
-            dfattack = characters.general.attack;
-            dfenemyattackback = characters.general.enemyattackback;
-    
-        } else if (YourDefender == characters.dooku.name) {
-            dfhealth = characters.dooku.health;
-            dfattack = characters.dooku.attack;
-            dfenemyattackback = characters.dooku.enemyattackback;
-    
-        }
-        
-    console.log(YourDefender);
-    
+
+        console.log(YourDefender);
+        console.log(defend);
+        console.log(selectedDefender);
+        console.log(attackchar);
+
     });
+
+
+    
+
+    $("#attack-button").click(function () {
+        //defender hp - fighter attack
+        //fighter hp - defender counter attack
+        dfhealth = dfhealth - ap;
+        hp = hp - dfenemyattackback;
+        $("#attack-text").text("You attacked " + dfname + " for " + ap + " damage!")
+    })
 
 });
