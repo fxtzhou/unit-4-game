@@ -69,12 +69,11 @@ function reset() {
     characters.dooku.attack = 12;
 
     // delete all in-game text.
-    $(".youAttacked").empty();
-    $(".attackedBack").empty();
-    $(".youDefeated").empty();
-    $(".youWon").empty();
-    $(".youLose").empty();
-    $(".noEnemy").empty();
+    $("#attack-text").empty();
+    $("counter-text").empty();
+    $("you-lose").empty();
+    $("you-win").empty();
+    $("#restart").hide();
 
     //reset hp stats
     $(".reyHp").html(characters.rey.health);
@@ -85,7 +84,6 @@ function reset() {
 reset();
 $(document).ready(function () {
     
-
 
     $(".row1").click(function () {
         
@@ -180,15 +178,63 @@ $(document).ready(function () {
 
     });
 
-
-    
-
     $("#attack-button").click(function () {
-        //defender hp - fighter attack
-        //fighter hp - defender counter attack
+        console.log(hp);
+        console.log(dfhealth);
+        if (!(hp < 1) || !(dfhealth < 1)) {
+        
         dfhealth = dfhealth - ap;
         hp = hp - dfenemyattackback;
-        $("#attack-text").text("You attacked " + dfname + " for " + ap + " damage!")
+        $("#attack-text").html("You attacked " + dfname + " for " + ap + " damage!")
+        dfhealth = (dfhealth - ap);
+        $("#counter-text").html(dfname + " attacked you back for " + dfenemyattackback + " damage!");
+            
+        console.log(yourChar);
+        console.log(selectedFighter);
+
+            $("." + YourDefender).html(dfhealth);
+             $("." + yourChar).html(hp);
+    }
+
+
+        if (dfhealth <= 0){ 
+
+           
+            $("#attack-text").empty();
+            $("#counter-text").empty();
+            $("#you-lose").html(YourDefender + " has been defeated... Choose another enemy." );
+            
+            $("#defender").empty();
+
+             
+            console.log(ap);
+            ap = (ap + 10);
+
+            ap.attack = ap;
+            console.log(ap);
+
+        
+}
+
+if ($(".move").children().length == 0){
+     		 
+
+    $("#attack-text").empty();
+    $("#counter-text").empty();
+    $("#you-lose").empty();
+    
+    $("#you-win").text("You won! The evil has been defeated."); 
+
+    $("#restart").show();
+
+    // When you click "Restart" the game begins again. 
+    $("#restart").click(function(){
+        location.reload(true);
+    })
+                     
+   }
+
+
     })
 
 });
