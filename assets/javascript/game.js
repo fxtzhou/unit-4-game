@@ -54,9 +54,9 @@ var characters = {
 
 function reset() {
     $('.char').show();
-     selectedFighter = "";
-     selectedDefender = "";
-     enemiesLeft = [];
+    selectedFighter = "";
+    selectedDefender = "";
+    enemiesLeft = [];
 
     characters.rey.health = 140;
     characters.ventress.health = 100;
@@ -83,13 +83,13 @@ function reset() {
 }
 reset();
 $(document).ready(function () {
-    
+
 
     $(".row1").click(function () {
-        
+
 
         if (selectedFighter == "") {
-            
+
             $(this).appendTo("#fighter");
             selectedFighter = $(this);
             yourChar = $(selectedFighter).attr("value");
@@ -125,7 +125,7 @@ $(document).ready(function () {
             for (var i = 0; i < 4; i++) {
                 $("._" + [i]).not(selectedFighter).appendTo("#enemy" + [i]);
             }
-        
+
         }
         console.log(yourChar);
 
@@ -182,59 +182,76 @@ $(document).ready(function () {
         console.log(hp);
         console.log(dfhealth);
         if (!(hp < 1) || !(dfhealth < 1)) {
-        
-        dfhealth = dfhealth - ap;
-        hp = hp - dfenemyattackback;
-        $("#attack-text").html("You attacked " + dfname + " for " + ap + " damage!")
-        dfhealth = (dfhealth - ap);
-        $("#counter-text").html(dfname + " attacked you back for " + dfenemyattackback + " damage!");
-            
-        console.log(yourChar);
-        console.log(selectedFighter);
+
+            dfhealth = dfhealth - ap;
+            hp = hp - dfenemyattackback;
+            $("#attack-text").html("You attacked " + dfname + " for " + ap + " damage!")
+            dfhealth = (dfhealth - ap);
+            $("#counter-text").html(dfname + " attacked you back for " + dfenemyattackback + " damage!");
+
+            console.log(yourChar);
+            console.log(selectedFighter);
 
             $("." + YourDefender).html(dfhealth);
-             $("." + yourChar).html(hp);
-    }
+            $("." + yourChar).html(hp);
+        }
 
 
-        if (dfhealth <= 0){ 
+        if (dfhealth <= 0) {
 
-           
+
             $("#attack-text").empty();
             $("#counter-text").empty();
-            $("#you-lose").html(YourDefender + " has been defeated... Choose another enemy." );
-            
-            $("#defender").empty();
+            $("#you-lose").html(YourDefender + " has been defeated... Choose another enemy.");
 
-             
+            $("#defender").empty();
+            selectedDefender = "";
+
             console.log(ap);
             ap = (ap + 10);
 
             ap.attack = ap;
             console.log(ap);
 
-        
-}
 
-if ($(".move").children().length == 0){
-     		 
+        }
 
-    $("#attack-text").empty();
-    $("#counter-text").empty();
-    $("#you-lose").empty();
-    
-    $("#you-win").text("You won! The evil has been defeated."); 
-
-    $("#restart").show();
-
-    // When you click "Restart" the game begins again. 
-    $("#restart").click(function(){
-        location.reload(true);
-    })
-                     
-   }
+        if ($(".move").children().length == 0) {
 
 
+            $("#attack-text").empty();
+            $("#counter-text").empty();
+            $("#you-lose").empty();
+
+            $("#you-win").text("You won! The evil has been defeated.");
+
+            $("#restart").show();
+
+
+            $("#restart").click(function () {
+                location.reload(true);
+            })
+
+        }
+
+        if (hp <= 0) {
+
+
+            $("#restart").show();
+            $("#attack-button").hide();
+
+            // You lose.
+            $("#attack-text").empty();
+            $("#counter-text").empty();
+            $("#you-win").empty();
+            $("#you-lose").html("You've been defeated...")
+
+
+            $("#restart").click(function () {
+                location.reload(true);
+            });
+
+        }
     })
 
 });
