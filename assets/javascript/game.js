@@ -183,9 +183,10 @@ $(document).ready(function () {
         console.log(dfhealth);
         if (!(hp < 1) || !(dfhealth < 1)) {
 
-            dfhealth = dfhealth - ap;
+            
             hp = hp - dfenemyattackback;
-            $("#attack-text").html("You attacked " + dfname + " for " + ap + " damage!")
+            $("#attack-text").html("You attacked " + dfname + " for " + ap + " damage!");
+
             dfhealth = (dfhealth - ap);
             $("#counter-text").html(dfname + " attacked you back for " + dfenemyattackback + " damage!");
 
