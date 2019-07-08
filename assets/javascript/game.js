@@ -69,6 +69,7 @@ function reset() {
     characters.dooku.attack = 12;
 
     // delete all in-game text.
+    $("#attack-button").hide();
     $("#attack-text").empty();
     $("counter-text").empty();
     $("you-lose").empty();
@@ -132,6 +133,8 @@ $(document).ready(function () {
     });
 
     $(".move").click(function () {
+        $("#attack-button").show();
+        $("#win-continue").empty();
 
         console.log(this);
 
@@ -139,7 +142,6 @@ $(document).ready(function () {
             $(this).appendTo("#defender");
             selectedDefender = $(this);
             YourDefender = $(selectedDefender).children().attr("value");
-
 
             if (YourDefender == characters.rey.name) {
                 dfhealth = characters.rey.health;
@@ -175,21 +177,20 @@ $(document).ready(function () {
         console.log(defend);
         console.log(selectedDefender);
         console.log(attackchar);
-
     });
 
     $("#attack-button").click(function () {
-        console.log(hp);
-        console.log(dfhealth);
-        if (!(hp < 1) || !(dfhealth < 1)) {
 
-            
+        if (!(hp < 1) || !(dfhealth < 1)) {
+            $("#no-enemy").hide();
+
             hp = hp - dfenemyattackback;
             $("#attack-text").html("You attacked " + dfname + " for " + ap + " damage!");
 
             dfhealth = (dfhealth - ap);
             $("#counter-text").html(dfname + " attacked you back for " + dfenemyattackback + " damage!");
 
+            
             console.log(yourChar);
             console.log(selectedFighter);
 
@@ -199,11 +200,11 @@ $(document).ready(function () {
 
 
         if (dfhealth <= 0) {
-
+            $("#attack-button").hide();
 
             $("#attack-text").empty();
             $("#counter-text").empty();
-            $("#you-lose").html(YourDefender + " has been defeated... Choose another enemy.");
+            $("#win-continue").html(YourDefender + " has been defeated... Choose another enemy.");
 
             $("#defender").empty();
             selectedDefender = "";
@@ -213,21 +214,15 @@ $(document).ready(function () {
 
             ap.attack = ap;
             console.log(ap);
-
-
         }
 
+        //win
         if ($(".move").children().length == 0) {
-
-
             $("#attack-text").empty();
             $("#counter-text").empty();
             $("#you-lose").empty();
-
+            $("#no-enemy").hide();
             $("#you-win").text("You won! The evil has been defeated.");
-
-            $("#restart").show();
-
 
             $("#restart").click(function () {
                 location.reload(true);
@@ -235,24 +230,28 @@ $(document).ready(function () {
 
         }
 
+
+        //lose 
         if (hp <= 0) {
-
-
-            $("#restart").show();
-            $("#attack-button").hide();
+            console.log(hp);
 
             // You lose.
             $("#attack-text").empty();
             $("#counter-text").empty();
             $("#you-win").empty();
             $("#you-lose").html("You've been defeated...")
-
+            $("#defender").hide();
+            $("#enemies-left").hide();
+            $("#attack-button").hide();
+            $("#no-enemy").hide();
+            $("#restart").show();
 
             $("#restart").click(function () {
                 location.reload(true);
             });
 
         }
+
     })
 
 });
