@@ -16,41 +16,52 @@
 <body style="background-image: url('assets/images/star-wars-background.jpg');">
 
     <h1>A long time ago in a galaxy far, far away...</h1>
-    <p>The galaxy is depending on you. Make your choice.</p>
+    <div class="lose"><p>The galaxy is depending on you. Make your choice.</p></div>
+   <h4 id="you-lose">       </h4>
+   <p id="restart"><button>Restart</button></p>
+
+    <div id="enemies-left" style="">
+            <h2>Enemies Left</h2>
+            <div class="move" id="enemy0" style="float: left;"></div>
+            <div class="move" id="enemy1" style="float: left;"> </div>
+            <div class="move" id="enemy2" style="float: left;"></div>
+            <div class="move" id="enemy3" style="float: left;"></div>
+        </div>
+
     <div class="container">
         <div class="row">
             <div class="row1 _0" id="rey" value="rey"
                 style="float:left; margin: 5px; padding: 10px; background-color: black;">
-                <h2>Rey</h2>
+                <h3>Rey</h3>
                 <img src='assets/images/rey.jpg' id="reyPic" height=150>
-                <h2 class="reyHp rey"></h2>
+                <h3 class="reyHp rey"></h3>
             </div>
 
             <div class="row1 _1" id="ventress" value="ventress"
                 style="float:left; margin: 5px; padding: 10px; background-color: black;">
-                <h2>Asajj Ventress</h2>
+                <h3>Asajj Ventress</h3>
                 <img src='assets/images/ventress.jpg' id="ventressPic" height=150>
-                <h2 class="ventressHp ventress"></h2>
+                <h3 class="ventressHp ventress"></h3>
             </div>
 
             <div class="row1 _2" id="general" value="general"
                 style="float:left; margin: 5px; padding: 10px; background-color: black;">
-                <h2>General Grievous</h2>
+                <h3>General Grievous</h3>
                 <img src='assets/images/general.jpg' id="generalPic" height=150>
-                <h2 class="generalHp general"></h2>
+                <h3 class="generalHp general"></h3>
             </div>
 
             <div class="row1 _3" id="dooku" value="dooku"
                 style="float:left; margin: 5px; padding: 10px; background-color: black;">
-                <h2>Count Dooku</h2>
+                <h3>Count Dooku</h3>
                 <img src='assets/images/dooku.jpg' id="dookuPic" height=150>
-                <h2 class="dookuHp dooku"></h2>
+                <h3 class="dookuHp dooku"></h3>
             </div>
         </div>
     </div>
 
-
-    <div id="fighter" style="float:left; width: 250px;">
+<div id="attack-area">
+    <div id="fighter" style="">
         <h2>Your Character: </h2>
         <div id="attack-button">
                 <button>Attack</button>
@@ -62,24 +73,19 @@
         <p id="attack-text"></p>
         <p id="counter-text"></p>
         <p id="win-continue"></p>
-        <p id="you-lose"></p>
+
         <p id="you-win"></p>
         <p id="no-enemy"></p>
-       <p id="restart"><button>Restart</button></p>
+
     </div>
 
-    <div id="defender" style="float: left; width: 250px;">
+    <div id="defender" style="">
         <h2>Defender: </h2>
         
     </div>
+</div>
 
-    <div id="enemies-left" style="float: right;">
-        <h2>Enemies Left</h2>
-        <div class="move" id="enemy0" style="float: left;"></div>
-        <div class="move" id="enemy1" style="float: left;"> </div>
-        <div class="move" id="enemy2" style="float: left;"></div>
-        <div class="move" id="enemy3" style="float: left;"></div>
-    </div>
+   
 
 
 </body>

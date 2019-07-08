@@ -17,26 +17,30 @@ var selectedEnemy;
 var enemiesLeft = [];
 var selectedFighterIndex;
 var result;
+var attackerfn;
 
 var characters = {
     rey: {
         name: 'rey',
+        fname: "Rey",
         health: 150,
         attack: 10,
         imageUrl: '../assets/images/rey.jpg',
-        enemyattackback: 5
+        enemyattackback: 22
     },
 
     ventress: { //asajj ventress
         name: 'ventress',
+        fname: 'Asajj Ventress',
         health: 175,
         attack: 15,
         imageUrl: '../assets/images/ventress.jpg',
-        enemyattackback: 20
+        enemyattackback: 17
     },
 
     general: { //general grievous
         name: 'general',
+        fname: 'General Grievous',
         health: 200,
         attack: 5,
         imageUrl: '../assets/images/general.jpg',
@@ -45,6 +49,7 @@ var characters = {
 
     dooku: { //count dooku
         name: 'dooku',
+        fname: 'Count Dooku',
         health: 150,
         attack: 20,
         imageUrl: '../assets/images/dooku.jpg',
@@ -63,10 +68,11 @@ function reset() {
     characters.general.health = 175;
     characters.dooku.health = 180;
 
-    characters.rey.attack = 15;
-    characters.ventress.attack = 20;
+    characters.rey.attack = 22;
+    characters.ventress.attack = 17;
     characters.general.attack = 10;
     characters.dooku.attack = 12;
+
 
     // delete all in-game text.
     $("#attack-button").hide();
@@ -87,6 +93,7 @@ $(document).ready(function () {
 
 
     $(".row1").click(function () {
+ 
 
 
         if (selectedFighter == "") {
@@ -102,24 +109,28 @@ $(document).ready(function () {
                 ap = characters.rey.attack;
                 enemyattackback = characters.rey.enemyattackback;
                 attackchar = characters.rey;
+                attackerfn = characters.rey.fname;
 
             } else if (yourChar == characters.ventress.name) {
                 hp = characters.ventress.health;
                 ap = characters.ventress.attack;
                 enemyattackback = characters.ventress.enemyattackback;
                 attackchar = characters.ventress;
+                attackerfn = characters.ventress.fname;
 
             } else if (yourChar == characters.general.name) {
                 hp = characters.general.health;
                 ap = characters.general.attack;
                 enemyattackback = characters.general.enemyattackback;
                 attackchar = characters.general;
+                attackerfn = characters.general.fname;
 
             } else if (yourChar == characters.dooku.name) {
                 hp = characters.dooku.health;
                 ap = characters.dooku.attack;
                 enemyattackback = characters.dooku.enemyattackback;
                 attackchar = characters.dooku;
+                attackerfn = characters.dooku.fname;
 
             }
 
@@ -136,6 +147,7 @@ $(document).ready(function () {
         $("#attack-button").show();
         $("#win-continue").empty();
 
+
         console.log(this);
 
         if (selectedDefender == "") {
@@ -147,28 +159,28 @@ $(document).ready(function () {
                 dfhealth = characters.rey.health;
                 dfattack = characters.rey.attack;
                 dfenemyattackback = characters.rey.enemyattackback;
-                dfname = characters.rey.name;
+                dfname = characters.rey.fname;
                 defend = characters.rey;
 
             } else if (YourDefender == characters.ventress.name) {
                 dfhealth = characters.ventress.health;
                 dfattack = characters.ventress.attack;
                 dfenemyattackback = characters.ventress.enemyattackback;
-                dfname = characters.ventress.name;
+                dfname = characters.ventress.fname;
                 defend = characters.ventress;
 
             } else if (YourDefender == characters.general.name) {
                 dfhealth = characters.general.health;
                 dfattack = characters.general.attack;
                 dfenemyattackback = characters.general.enemyattackback;
-                dfname = characters.general.name;
+                dfname = characters.general.fname;
                 defend = characters.general;
 
             } else if (YourDefender == characters.dooku.name) {
                 dfhealth = characters.dooku.health;
                 dfattack = characters.dooku.attack;
                 dfenemyattackback = characters.dooku.enemyattackback;
-                dfname = characters.dooku.name;
+                dfname = characters.dooku.fname;
                 defend = characters.dooku;
             }
         }
@@ -204,7 +216,18 @@ $(document).ready(function () {
 
             $("#attack-text").empty();
             $("#counter-text").empty();
-            $("#win-continue").html(YourDefender + " has been defeated... Choose another enemy.");
+            $("#win-continue").html(dfname + " has been defeated... Choose another enemy.");
+            $("#attack-text").empty();
+            $("#counter-text").empty();
+            $("#you-win").empty();
+           
+           $("#fighter").show();
+           
+            
+            $("#enemies-left").show();
+            $("#attack-button").hide();
+            $("#no-enemy").hide();
+           
 
             $("#defender").empty();
             selectedDefender = "";
@@ -216,6 +239,7 @@ $(document).ready(function () {
             console.log(ap);
         }
 
+      
         //win
         if ($(".move").children().length == 0) {
             $("#attack-text").empty();
@@ -231,6 +255,7 @@ $(document).ready(function () {
         }
 
 
+
         //lose 
         if (hp <= 0) {
             console.log(hp);
@@ -239,8 +264,10 @@ $(document).ready(function () {
             $("#attack-text").empty();
             $("#counter-text").empty();
             $("#you-win").empty();
-            $("#you-lose").html("You've been defeated...")
+            $("#you-lose").html("You've been defeated... Perhaps you will have your chance in the extended universe.")
+            $(".lose").hide();
             $("#defender").hide();
+            $("#fighter").empty();
             $("#enemies-left").hide();
             $("#attack-button").hide();
             $("#no-enemy").hide();

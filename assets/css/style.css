@@ -1,19 +1,32 @@
-/* Container for characters */
-.container {
-
-    float: left;
+#attack-area{
+    float: right;
+    width: 50%;
 }
 
 /* Container for characters when chosen */
-.fight-container {
-    
+#fighter {
+    margin-top: -30px;
+    height: 200px;
+    width: 20%;
+    text-align: center;
+}
+
+#defender {
+    margin-top: -50px;
+    height: 200px;
+    width: 20%;
+    text-align: center;
+}
+
+#enemies-left{
+    width: 50%;
 }
 
 /* title style */
 h1 {
-    padding: 20px;
+    padding: 10px;
     font-family: 'News Cycle', serif;
-    font-size: 72px;
+    font-size: 48px;
     color: lightblue;
     display: block;
     text-align: center;
@@ -22,9 +35,9 @@ h1 {
 /* name styles */
 h2 {
     font-family: 'News Cycle', serif;
-    font-size: 18px;
+    font-size: 24px;
     text-align: center;
-    color: yellow;
+    color: white;
     padding-bottom: 10px;
 }
 
@@ -33,6 +46,7 @@ h3 {
     font-family: 'News Cycle', serif;
     font-size: 18px;
     color: yellow;
+    line-height: 24px;
     text-align: center;
 
 }
@@ -44,4 +58,12 @@ p {
     color: yellow;
     text-align: center;
     padding: 10px;
+}
+
+h4{
+    font-family: 'News Cycle', serif;
+    font-size: 36px;
+    color: red;
+    margin: auto;
+    text-align: center;
 }
